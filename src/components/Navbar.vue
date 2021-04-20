@@ -1,5 +1,7 @@
 <template>
- 
+ <div> 
+   <h2>Navbar</h2>
+ </div>
 </template>
 
 <script>
@@ -10,23 +12,12 @@ export default {
     },
     data () {
       return {
-      right: null,
-      right: false,
-      left: null,
-      left: false,
-      loggedIn:false,
-    }
+     
+      }
     },
 }
 </script>
 
 <style >
-.removeLine{
-    text-decoration: none;
-    color: grey;
- }
- span:hover {
-  cursor: pointer;
-  color: gray;
-}
+
 </style>

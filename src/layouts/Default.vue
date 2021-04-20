@@ -8,6 +8,7 @@
     <!--Drawer Right-->
     <v-navigation-drawer app v-model="right" fixed right temporary width="300">
       <v-list dense>
+        <Auth />
       </v-list>
     </v-navigation-drawer>
 
@@ -15,6 +16,7 @@
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click.stop="left = !left"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
+       <router-link :to="{ name: 'Home' }">
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -34,8 +36,10 @@
           width="100"
         />
       </div>
+      </router-link>
       <v-spacer></v-spacer>
-       <v-app-bar-nav-icon @click.stop="right = !right"></v-app-bar-nav-icon>
+      <v-btn plain v-if="!loggedIn" @click.stop="right = !right"><v-icon>mdi-login</v-icon>Login</v-btn>
+      
     </v-app-bar>
 
     <!-- Main Content -->
@@ -54,13 +58,12 @@
 </template>
 
 <script>
-
-
+import Auth from '../components/auth/Auth.vue'
 export default {
   name: 'App',
 
   components: {
-
+    Auth
   },
   data(){
     return{

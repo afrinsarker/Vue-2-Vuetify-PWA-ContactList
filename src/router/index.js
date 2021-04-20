@@ -1,29 +1,57 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// Home 
-import Home from '../views/Home.vue'
-// Contact
-import ContactList from '../views/contact/ContactList.vue'
+
+
+// Website 
+import Website from '../layouts/Website.vue'
+import Home from '../views/website/Home.vue'
+
+
+// Admin Portal
+import AdminPortal from '../layouts/AdminPortal.vue'
+import Dashboard from '../views/adminportal/Dashboard.vue'
+import ContactList from '../views/adminportal/contact/ContactList.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  //Website
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Website',
+    component: Website,
+    children:[
+      {
+        path: '',
+        name: 'Home',
+        component: Home,
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: () => import('../views/website/About.vue')
+      }
+    ]
   },
 
+  //Admin Portal
   {
-    path: '/contacts',
-    name: 'ContactList',
-    component: ContactList
+    path: '/admin',
+    name: 'AdminPortal',
+    component: AdminPortal,
+    children:[
+      {
+        path: '',
+        name: 'Dashboard',
+        component:Dashboard,
+      },
+      {
+        path: '/contacts',
+        name: 'ContactList',
+        component: ContactList
+      },
+    ]
   },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
-  }
 ]
 
 const router = new VueRouter({
